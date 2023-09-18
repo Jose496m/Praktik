@@ -1,0 +1,104 @@
+---
+import { Image } from "astro:assets";
+import forside from "../assets/forside.webp";
+---
+
+<div class="billede-container billede1">
+  <Image class="forside1" src={forside} alt="forsidebillede" />
+</div>
+
+<div class="text-container3 scroll0">
+  <h1>Rejsen som 26 årig Multimedie designer</h1>
+</div>
+
+<div class="grid_1-1">
+  <p class="text-container">
+    Jeg er en 26 årig studerende indenfor multimediedesign, med en passion for
+    minimalistisk æstetik. På nuværende tidspunkt er jeg I gang med mit 3.
+    semester, hvor jeg udforsker og dykker dybere ned I designverdenens mange
+    facetter. Min tilgang til design er præget af kærlighed til enkelthed og
+    funktionel elegance.
+  </p>
+  <p class="text-container1">
+    Jeg elsker at skabe visuelle løsninger, der taler for sig selv gennem ren og
+    effektiv design. At udfordre mig selv er en drivkraft, og jeg søger altid
+    nye måder at udfordre konventionelle designnormer på. Mit mål er at skave
+    indtryksfulde og meningsfulde designs, der beriger brugeroplevelsen og
+    skaber en varig forbindelse mellem teknologi og æstestik.
+  </p>
+</div>
+
+<style>
+  .forside1 {
+    width: 100%;
+    height: 75%;
+    object-fit: cover;
+  }
+  /*.text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }*/
+
+  .grid_1-1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    align-items: center;
+  }
+  .text-container {
+    width: 500px;
+    margin-left: 30%;
+    line-height: 1.7rem;
+    margin-top: -42%;
+  }
+  .text-container1 {
+    width: 500px;
+    line-height: 1.7rem;
+    margin-top: -40%;
+  }
+  h1 {
+    text-align: center;
+    font-family: "Quicksand", sans-serif;
+    font-size: var(--size-7);
+  }
+  .text-container3 {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  p {
+    font-family: "Quicksand", sans-serif;
+    font-weight: 300;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.to(".billede1", {
+    duration: 5,
+    scrollTrigger: {
+      trigger: ".billede1",
+      pin: true,
+      //markers: true,
+    },
+  });
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.from(".scroll0", {
+    scrollTrigger: {
+      trigger: ".scroll0",
+      start: "start bottom ",
+      end: "top top",
+      //markers: true,
+    },
+    y: 400,
+    scale: 1,
+    duration: 1,
+  });
+</script>
